@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>PEEL PATROL – The Banana Snake Game</title>
+  <meta name="description" content="A retro pixel-art arcade snake game built with HTML5 Canvas and vanilla JavaScript.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="game-container">
+
+    <!-- Header Section -->
+    <header class="arcade-header">
+      <h1 class="game-title">
+        <span class="title-icon">🍌</span>
+        PEEL PATROL
+      </h1>
+      <p class="game-subtitle">"One snake. Endless bananas."</p>
+    </header>
+
+    <!-- Warm Cream Score Panel -->
+    <section class="score-panel" aria-label="Game Scoreboard">
+      <div class="score-box">
+        <span class="score-label">Score</span>
+        <span class="score-value" id="currentScore">0</span>
+      </div>
+      <div class="score-box">
+        <span class="score-label">🏆 Best</span>
+        <span class="score-value high-score" id="highScore">0</span>
+      </div>
+      <div class="score-box">
+        <span class="score-label">⚡ Speed</span>
+        <span class="score-value speed-val" id="speedMultiplier">1.0x</span>
+      </div>
+    </section>
+
+    <!-- Golden Banana Active Alert Banner -->
+    <div class="golden-banner" id="goldenBanner">
+      <span>⭐ GOLDEN BANANA!</span>
+      <div class="golden-banner-bar">
+        <div class="golden-banner-fill" id="goldenBarFill"></div>
+      </div>
+      <span id="goldenTimeLeft">5.0s</span>
+    </div>
+
+    <!-- Main Game Board Container -->
+    <main class="board-container">
+      <canvas id="gameCanvas" width="480" height="480"></canvas>
+
+      <!-- Overlay: Start Screen -->
+      <div class="overlay" id="overlayStart">
+        <h2 class="overlay-title">PEEL PATROL</h2>
+        <p class="overlay-subtitle">
+          Guide the hungry green snake, munch on bananas to grow, and catch the rare Golden Banana before it vanishes!
+        </p>
+        <button class="arcade-btn arcade-btn-primary" id="btnStart">
+          ▶ START GAME
+        </button>
+      </div>
+
+      <!-- Overlay: Pause Screen -->
+      <div class="overlay hidden" id="overlayPause">
+        <h2 class="overlay-title">PAUSED</h2>
+        <p class="overlay-subtitle">Take a breather, patrol officer.</p>
+        <button class="arcade-btn" id="btnResume">
+          ▶ RESUME
+        </button>
+      </div>
+
+      <!-- Overlay: Game Over Screen -->
+      <div class="overlay hidden" id="overlayGameOver">
+        <h2 class="overlay-title" style="color: #ff5252;">GAME OVER</h2>
+        <div class="overlay-stats">
+          <div class="overlay-stats-row">
+            <span>FINAL SCORE:</span>
+            <strong id="finalScore" style="color: #1e361c; font-size: 0.95rem;">0</strong>
+          </div>
+          <div class="overlay-stats-row">
+            <span>BEST SCORE:</span>
+            <strong id="finalHighScore" style="color: #9a4800; font-size: 0.95rem;">0</strong>
+          </div>
+          <div id="newBestBadge" class="new-best-badge" style="display: none; margin-top: 6px;">
+            🎉 NEW HIGH SCORE! 🎉
+          </div>
+        </div>
+        <button class="arcade-btn arcade-btn-primary" id="btnPlayAgain">
+          🔄 PLAY AGAIN
+        </button>
+      </div>
+    </main>
+
+    <!-- In-Game Control Bar -->
+    <section class="control-bar" aria-label="Game Controls">
+      <button class="btn-small" id="btnPause" title="Pause or Resume game (Space or P)">
+        ⏸️ Pause
+      </button>
+      <button class="btn-small" id="btnRestart" title="Restart game (R)">
+        🔄 Restart
+      </button>
+      <button class="btn-small btn-sound" id="btnSound" title="Toggle audio sound effects (M)">
+        🔊 Sound: ON
+      </button>
+    </section>
+
+    <!-- Desktop Keyboard Shortcut Legend -->
+    <section class="keyboard-legend">
+      <div class="legend-item">
+        <span class="key-badge">W A S D</span> / <span class="key-badge">↑ ↓ ← →</span> Move
+      </div>
+      <div class="legend-item">
+        <span class="key-badge">Space</span> / <span class="key-badge">P</span> Pause
+      </div>
+      <div class="legend-item">
+        <span class="key-badge">R</span> Restart
+      </div>
+      <div class="legend-item">
+        <span class="key-badge">M</span> Mute
+      </div>
+    </section>
+
+    <!-- Mobile Virtual D-Pad Touch Controls -->
+    <section class="mobile-controls" aria-label="Mobile Touch D-Pad">
+      <div class="dpad-row">
+        <button class="dpad-btn" id="dpadUp" aria-label="Move Up">▲</button>
+      </div>
+      <div class="dpad-row">
+        <button class="dpad-btn" id="dpadLeft" aria-label="Move Left">◀</button>
+        <button class="dpad-btn" id="dpadDown" aria-label="Move Down">▼</button>
+        <button class="dpad-btn" id="dpadRight" aria-label="Move Right">▶</button>
+      </div>
+    </section>
+
+    <!-- College Project Footer -->
+    <footer class="game-footer">
+      <p>Mini-Project: <span>PEEL PATROL</span> • HTML5 Canvas + Vanilla JS</p>
+    </footer>
+
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,2 @@
+PEEL PATROL - The Banana Snake Game
+Ready to play. Open index.html in any browser.
